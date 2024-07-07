@@ -1,7 +1,7 @@
 package order
 
 import (
-	"circle-fiber/lib/model"
+	"circle-2.0/lib/model"
 
 	"gorm.io/gorm"
 )

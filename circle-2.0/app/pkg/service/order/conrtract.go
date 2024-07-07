@@ -1,10 +1,11 @@
 package order
 
 import (
-	"circle-fiber/app/pkg/repository/order"
-	"circle-fiber/app/pkg/repository/user"
-	"circle-fiber/lib/model"
 	"time"
+
+	"circle-2.0/app/pkg/repository/order"
+	"circle-2.0/app/pkg/repository/user"
+	"circle-2.0/lib/model"
 
 	"github.com/go-redis/redis/v8"
 	"gorm.io/gorm"

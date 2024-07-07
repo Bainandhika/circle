@@ -1,14 +1,15 @@
 package order
 
 import (
-	"circle-fiber/lib/helper/constant"
-	"circle-fiber/lib/helper/tool"
-	"circle-fiber/lib/logger"
-	"circle-fiber/lib/model"
 	"database/sql"
 	"fmt"
 	"net/http"
 	"time"
+
+	"circle-2.0/lib/helper/constant"
+	"circle-2.0/lib/helper/tool"
+	"circle-2.0/lib/logger"
+	"circle-2.0/lib/model"
 )
 
 func (s *orderService) UpdateOrder(orderMainID string, req model.UpdateOrderRequest, startTime time.Time) *model.Status {

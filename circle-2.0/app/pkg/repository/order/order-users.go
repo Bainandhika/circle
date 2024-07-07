@@ -1,9 +1,10 @@
 package order
 
 import (
-	customError "circle-fiber/lib/helper/custom-error"
-	"circle-fiber/lib/model"
 	"errors"
+
+	customError "circle-2.0/lib/helper/custom-error"
+	"circle-2.0/lib/model"
 
 	"gorm.io/gorm"
 )
@@ -39,7 +40,7 @@ func (r *orderUserRepo) GetOrderUserByOrderID(tx *gorm.DB, orderID string) ([]mo
 		if err := tx.Find(&orderPeople, "order_id =?", orderID).Error; err != nil {
 			return nil, err
 		}
-    } else {
+	} else {
 		if err := r.DB.Find(&orderPeople, "order_id =?", orderID).Error; err != nil {
 			return nil, err
 		}

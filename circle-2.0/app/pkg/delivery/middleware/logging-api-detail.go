@@ -1,11 +1,12 @@
 package middleware
 
 import (
-	"circle-fiber/lib/helper/tool"
-	"circle-fiber/lib/logger"
-	"circle-fiber/lib/model"
 	"net/http"
 	"time"
+
+	"circle-2.0/lib/helper/tool"
+	"circle-2.0/lib/logger"
+	"circle-2.0/lib/model"
 
 	"github.com/gofiber/fiber/v2"
 )

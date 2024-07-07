@@ -1,11 +1,12 @@
 package logger
 
 import (
-	"circle-fiber/app/config"
 	"fmt"
 	"log"
 	"os"
 	"time"
+
+	"circle-2.0/app/config"
 
 	"github.com/jasonlvhit/gocron"
 )
@@ -21,7 +22,7 @@ var (
 
 func createLogFile() error {
 	date := time.Now().Format("20060102")
-	fileName = fmt.Sprintf("%scircle-fiber-%s.log", config.App.LogPath, date)
+	fileName = fmt.Sprintf("%scircle-2.0-%s.log", config.App.LogPath, date)
 
 	var err error
 	file, err = os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)

@@ -1,9 +1,10 @@
 package order
 
 import (
-	customError "circle-fiber/lib/helper/custom-error"
-	"circle-fiber/lib/model"
 	"errors"
+
+	customError "circle-2.0/lib/helper/custom-error"
+	"circle-2.0/lib/model"
 
 	"gorm.io/gorm"
 )
@@ -34,16 +35,16 @@ func (r *additionalCostRepo) CreateAdditionalCost(tx *gorm.DB, additionalCost mo
 
 func (r *additionalCostRepo) GetAdditionalCostByOrderID(tx *gorm.DB, orderID string) ([]model.AdditionalCosts, error) {
 	var additional []model.AdditionalCosts
-	if tx!= nil {
-        if err := tx.Where("order_id =?", orderID).Find(&additional).Error; err != nil {
+	if tx != nil {
+		if err := tx.Where("order_id =?", orderID).Find(&additional).Error; err != nil {
 			return nil, err
 		}
-    } else {
-        if err := r.DB.Where("order_id =?", orderID).Find(&additional).Error; err != nil {
+	} else {
+		if err := r.DB.Where("order_id =?", orderID).Find(&additional).Error; err != nil {
 			return nil, err
 		}
-    }
-	
+	}
+
 	return additional, nil
 }
 

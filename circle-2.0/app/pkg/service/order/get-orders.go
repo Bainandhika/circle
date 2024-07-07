@@ -1,9 +1,10 @@
 package order
 
 import (
-	"circle-fiber/lib/model"
 	"fmt"
 	"net/http"
+
+	"circle-2.0/lib/model"
 )
 
 func (s *orderService) GetOrders() (orders []model.OrderMains, status *model.Status) {

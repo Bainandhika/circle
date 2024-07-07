@@ -1,8 +1,8 @@
 package order
 
 import (
-	"circle-fiber/app/pkg/service/order"
-	"circle-fiber/app/pkg/service/user"
+	"circle-2.0/app/pkg/service/order"
+	"circle-2.0/app/pkg/service/user"
 )
 
 type OrderHandler struct {

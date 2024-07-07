@@ -1,10 +1,11 @@
 package user
 
 import (
-	"circle-fiber/app/pkg/delivery/handler/template"
-	"circle-fiber/lib/model"
 	"net/http"
 	"time"
+
+	"circle-2.0/app/pkg/delivery/handler/template"
+	"circle-2.0/lib/model"
 
 	"github.com/gofiber/fiber/v2"
 )

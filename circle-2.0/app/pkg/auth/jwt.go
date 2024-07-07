@@ -1,8 +1,9 @@
 package auth
 
 import (
-	"circle-fiber/app/config"
 	"time"
+
+	"circle-2.0/app/config"
 
 	"github.com/golang-jwt/jwt/v5"
 )

@@ -1,9 +1,10 @@
 package middleware
 
 import (
-	"circle-fiber/app/config"
 	"net/http"
 	"strings"
+
+	"circle-2.0/app/config"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v5"

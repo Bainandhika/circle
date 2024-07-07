@@ -1,10 +1,11 @@
 package nosql
 
 import (
-	"circle-fiber/app/config"
-	"circle-fiber/lib/logger"
 	"context"
 	"fmt"
+
+	"circle-2.0/app/config"
+	"circle-2.0/lib/logger"
 
 	"github.com/go-redis/redis/v8"
 )

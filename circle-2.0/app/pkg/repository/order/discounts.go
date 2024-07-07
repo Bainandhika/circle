@@ -1,9 +1,10 @@
 package order
 
 import (
-	customError "circle-fiber/lib/helper/custom-error"
-	"circle-fiber/lib/model"
 	"errors"
+
+	customError "circle-2.0/lib/helper/custom-error"
+	"circle-2.0/lib/model"
 
 	"gorm.io/gorm"
 )
@@ -37,11 +38,11 @@ func (r *discountRepo) GetDiscountsByOrderID(tx *gorm.DB, orderID string) ([]mod
 	if tx != nil {
 		if err := tx.Find(&discounts, "order_id = ?", orderID).Error; err != nil {
 			return nil, err
-        }
+		}
 	} else {
-		if err := r.DB.Find(&discounts, "order_id = ?", orderID).Error; err!= nil {
-            return nil, err
-        }
+		if err := r.DB.Find(&discounts, "order_id = ?", orderID).Error; err != nil {
+			return nil, err
+		}
 	}
 
 	return discounts, nil

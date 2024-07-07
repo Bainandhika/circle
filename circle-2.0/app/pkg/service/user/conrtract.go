@@ -1,9 +1,10 @@
 package user
 
 import (
-	"circle-fiber/app/pkg/repository/user"
-	"circle-fiber/lib/model"
 	"time"
+
+	"circle-2.0/app/pkg/repository/user"
+	"circle-2.0/lib/model"
 
 	"gorm.io/gorm"
 )

@@ -1,11 +1,12 @@
 package order
 
 import (
-	"circle-fiber/app/pkg/delivery/handler/template"
-	customError "circle-fiber/lib/helper/custom-error"
-	"circle-fiber/lib/model"
 	"net/http"
 	"time"
+
+	"circle-2.0/app/pkg/delivery/handler/template"
+	customError "circle-2.0/lib/helper/custom-error"
+	"circle-2.0/lib/model"
 
 	"github.com/gofiber/fiber/v2"
 )

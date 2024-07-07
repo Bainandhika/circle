@@ -1,12 +1,13 @@
 package main
 
 import (
-	"circle-fiber/app/config" // use package initialization method to call init function
-	"circle-fiber/app/pkg/delivery/router"
-	"circle-fiber/lib/connection/database"
-	"circle-fiber/lib/connection/nosql"
-	"circle-fiber/lib/logger" // func init called too
 	"fmt"
+
+	"circle-2.0/app/config" // use package initialization method to call init function
+	"circle-2.0/app/pkg/delivery/router"
+	"circle-2.0/lib/connection/database"
+	"circle-2.0/lib/connection/nosql"
+	"circle-2.0/lib/logger" // func init called too
 
 	"github.com/jasonlvhit/gocron"
 )

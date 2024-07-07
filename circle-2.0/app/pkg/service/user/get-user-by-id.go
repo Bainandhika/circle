@@ -1,11 +1,12 @@
 package user
 
 import (
-	customError "circle-fiber/lib/helper/custom-error"
-	"circle-fiber/lib/model"
 	"errors"
 	"fmt"
 	"net/http"
+
+	customError "circle-2.0/lib/helper/custom-error"
+	"circle-2.0/lib/model"
 )
 
 func (s *userService) GetUserByID(id string) (user model.Users, status *model.Status) {

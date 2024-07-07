@@ -1,7 +1,7 @@
 package user
 
 import (
-	"circle-fiber/app/pkg/service/user"
+	"circle-2.0/app/pkg/service/user"
 )
 
 type UserHandler struct {

@@ -1,8 +1,6 @@
 package tool
 
 import (
-	"circle-fiber/app/config"
-	"circle-fiber/lib/model"
 	"errors"
 	"fmt"
 	"image"
@@ -11,6 +9,9 @@ import (
 	"image/png"
 	"os"
 	"strings"
+
+	"circle-2.0/app/config"
+	"circle-2.0/lib/model"
 
 	"github.com/golang/freetype"
 )

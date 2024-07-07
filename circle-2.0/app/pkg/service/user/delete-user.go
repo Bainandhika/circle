@@ -1,9 +1,10 @@
 package user
 
 import (
-	"circle-fiber/lib/model"
 	"fmt"
 	"net/http"
+
+	"circle-2.0/lib/model"
 )
 
 func (s *userService) DeleteUser(userID string) *model.Status {

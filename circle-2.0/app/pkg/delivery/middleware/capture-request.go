@@ -1,9 +1,10 @@
 package middleware
 
 import (
-	"circle-fiber/lib/model"
 	"os"
 	"time"
+
+	"circle-2.0/lib/model"
 
 	"github.com/gofiber/fiber/v2"
 )

@@ -1,12 +1,13 @@
 package user
 
 import (
-	"circle-fiber/app/pkg/auth"
-	customError "circle-fiber/lib/helper/custom-error"
-	"circle-fiber/lib/model"
 	"fmt"
 	"net/http"
 	"strings"
+
+	"circle-2.0/app/pkg/auth"
+	customError "circle-2.0/lib/helper/custom-error"
+	"circle-2.0/lib/model"
 )
 
 func (s *userService) LoginUser(req model.LoginUserRequest) (resp model.LoginUserResponse, status *model.Status) {

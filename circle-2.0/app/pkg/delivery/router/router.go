@@ -1,15 +1,15 @@
 package router
 
 import (
-	"circle-fiber/app/pkg/delivery/handler/health"
-	orderHandler "circle-fiber/app/pkg/delivery/handler/order"
-	userHandler "circle-fiber/app/pkg/delivery/handler/user"
-	"circle-fiber/app/pkg/delivery/middleware"
-	orderRepo "circle-fiber/app/pkg/repository/order"
-	userRepo "circle-fiber/app/pkg/repository/user"
-	orderService "circle-fiber/app/pkg/service/order"
-	userService "circle-fiber/app/pkg/service/user"
-	"circle-fiber/lib/helper/constant"
+	"circle-2.0/app/pkg/delivery/handler/health"
+	orderHandler "circle-2.0/app/pkg/delivery/handler/order"
+	userHandler "circle-2.0/app/pkg/delivery/handler/user"
+	"circle-2.0/app/pkg/delivery/middleware"
+	orderRepo "circle-2.0/app/pkg/repository/order"
+	userRepo "circle-2.0/app/pkg/repository/user"
+	orderService "circle-2.0/app/pkg/service/order"
+	userService "circle-2.0/app/pkg/service/user"
+	"circle-2.0/lib/helper/constant"
 
 	"github.com/go-redis/redis/v8"
 	"github.com/goccy/go-json"

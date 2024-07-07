@@ -1,13 +1,14 @@
 package database
 
 import (
-	"circle-fiber/app/config"
-	"circle-fiber/lib/logger"
-	"circle-fiber/lib/model"
 	"fmt"
 	"log"
 	"os"
 	"time"
+
+	"circle-2.0/app/config"
+	"circle-2.0/lib/logger"
+	"circle-2.0/lib/model"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"

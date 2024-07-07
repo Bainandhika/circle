@@ -1,11 +1,12 @@
 package user
 
 import (
-	"circle-fiber/lib/helper/tool"
-	"circle-fiber/lib/model"
 	"fmt"
 	"net/http"
 	"time"
+
+	"circle-2.0/lib/helper/tool"
+	"circle-2.0/lib/model"
 
 	"github.com/google/uuid"
 	"github.com/jinzhu/copier"

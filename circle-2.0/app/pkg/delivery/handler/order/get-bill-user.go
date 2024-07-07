@@ -1,10 +1,11 @@
 package order
 
 import (
-	"circle-fiber/app/pkg/delivery/handler/template"
-	customError "circle-fiber/lib/helper/custom-error"
-	"circle-fiber/lib/model"
 	"net/http"
+
+	"circle-2.0/app/pkg/delivery/handler/template"
+	customError "circle-2.0/lib/helper/custom-error"
+	"circle-2.0/lib/model"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -18,7 +19,7 @@ func (h *OrderHandler) GetBillUser(c *fiber.Ctx) error {
 	}(c, response)
 
 	request := model.GetBillUserRequest{
-		UserID: c.Query("user_id"),
+		UserID:  c.Query("user_id"),
 		OrderID: c.Query("order-id"),
 	}
 

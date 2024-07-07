@@ -1,13 +1,14 @@
 package order
 
 import (
-	"circle-fiber/lib/helper/constant"
-	customError "circle-fiber/lib/helper/custom-error"
-	"circle-fiber/lib/helper/tool"
-	"circle-fiber/lib/model"
 	"fmt"
 	"net/http"
 	"strings"
+
+	"circle-2.0/lib/helper/constant"
+	customError "circle-2.0/lib/helper/custom-error"
+	"circle-2.0/lib/helper/tool"
+	"circle-2.0/lib/model"
 )
 
 func (s *orderService) GetBillUser(req model.GetBillUserRequest) (resp model.GetBillUserResponse, status *model.Status) {
