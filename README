@@ -1,6 +1,6 @@
-# Circle 2.0 - A GoFiber-based Order Management System
+# Circle 2.0 - Order Management System
 
-Circle is a simple and lightweight order management system built with Fiber, a popular Go web framework. The app aims to simplify the process of splitting bills for various orders, considering additional costs and discounts. It now includes MySQL as the database and Redis for caching.
+Circle is a simple and lightweight order management system. At version 1.0 it built with Gin framework, but now it use Fiber framework for get better performance. The app aims to simplify the process of splitting bills for various orders, considering additional costs and discounts. It includes MySQL as the database and Redis for caching. In version 2.0 new feature is added, that is update order.
 
 ## Features
 
@@ -27,13 +27,13 @@ To install Circle, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/circle.git
+git clone https://github.com/Bainandhika/circle.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd circle
+cd circle/circle-2.0
 ```
 
 3. Install dependencies:
@@ -84,4 +84,4 @@ Circle provides the following API endpoints:
 ## Notes
 
 - The decimal tolerance for price calculations is set to 2 decimal places.
-- Circle now uses MySQL as the database and Redis for caching. You will need to set up your own MySQL and Redis instances and update the configuration accordingly at circle-config.yaml .
+- Circle uses MySQL as the database and Redis for caching. You will need to set up your own MySQL and Redis instances and update the configuration accordingly at circle-config.yaml .
