@@ -1,0 +1,82 @@
+# Circle - A Gin-based Order Management System
+
+Circle is a simple and lightweight order management system built with Gin, a popular Go web framework. The app aims to simplify the process of splitting bills for various orders, considering additional costs and discounts. It now includes MySQL as the database and Redis for caching.
+
+## Features
+
+- User service:
+
+  - Create User
+  - Get User
+  - Get Users
+  - Update User
+  - Delete User
+
+- Order service:
+  - Create Order
+  - Get Orders List
+  - Get Bill
+  - Get Bill of a User
+  - Delete Order
+
+## Installation
+
+To install Circle, follow these steps:
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/circle.git
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd circle
+```
+
+3. Install dependencies:
+
+```bash
+go mod tidy -v
+```
+
+4. Build the app:
+
+```bash
+go build main.go
+```
+
+## Usage
+
+To run the Circle app, execute the following command:
+
+```bash
+./main
+```
+
+The app will start listening on port 8080 by default. You can access it in your browser at http://localhost:8080.
+
+## API Endpoints
+
+Circle provides the following API endpoints:
+
+- User service:
+
+  - POST /users - Create a new user
+  - GET /users/:id - Get a user by ID
+  - GET /users - Get all users
+  - PUT /users/:id - Update a user by ID
+  - DELETE /users/:id - Delete a user by ID
+
+- Order service:
+  - POST /orders - Create a new order
+  - GET /orders - Get all orders
+  - GET /orders/:id/bill - Get the bill for a specific order
+  - GET /users/:id/bill - Get the bill for a specific user
+  - DELETE /orders/:id - Delete an order by ID
+
+## Notes
+
+- The decimal tolerance for price calculations is set to 2 decimal places.
+- Circle now uses MySQL as the database and Redis for caching. You will need to set up your own MySQL and Redis instances and update the configuration accordingly at circle-config.yaml .
