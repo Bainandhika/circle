@@ -18,7 +18,7 @@
 *.log
 
 # Text files
-*.text
+*.txt
 
 # Go workspace file
 go.work
