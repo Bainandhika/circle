@@ -1,6 +1,7 @@
 package user
 
 import (
+	"sync"
 	"time"
 
 	"circle-2.0/app/pkg/repository/user"
@@ -12,6 +13,7 @@ import (
 type userService struct {
 	DB       *gorm.DB
 	UserRepo user.UserRepo
+	mu       sync.Mutex
 }
 
 type UserService interface {

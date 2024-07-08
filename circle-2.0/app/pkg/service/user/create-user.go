@@ -13,6 +13,9 @@ import (
 )
 
 func (s *userService) CreateUser(req model.CreateUserRequest, startTime time.Time) (newUser model.Users, status *model.Status) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	
 	funcName := "[Service - CreateUser]"
 
 	req.Name = tool.CapitalizeEachWord(req.Name)
