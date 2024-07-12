@@ -19,7 +19,8 @@ func main() {
 		<-sch.Start()
 	}()
 
-	mysql := database.MySQLConnect()
+	database.InitMySQLConnection()
+	mysql := database.MySQLConnect
 	mysqlDB, _ := mysql.DB()
 
 	redis := nosql.RedisConnect()

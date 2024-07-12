@@ -15,7 +15,9 @@ import (
 	gormLogger "gorm.io/gorm/logger"
 )
 
-func MySQLConnect() *gorm.DB {
+var MySQLConnect *gorm.DB
+
+func setMySQL() *gorm.DB {
 	dbConfig := config.DB
 
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&loc=Local",
@@ -88,4 +90,8 @@ func MySQLConnect() *gorm.DB {
 	}
 
 	return database
+}
+
+func InitMySQLConnection() {
+	MySQLConnect = setMySQL()
 }
