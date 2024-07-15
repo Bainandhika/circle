@@ -20,7 +20,7 @@ func CaptureRequest(c *fiber.Ctx) error {
 
 	apiDetail.Headers = model.Headers{
 		TransactionID: c.Get("transaction-id"),
-		APIKey:        c.Get("api-key"),
+		SecretKey:     c.Get("secret-key"),
 		ChannelID:     c.Get("channel-id"),
 	}
 
