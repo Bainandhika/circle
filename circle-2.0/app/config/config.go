@@ -1,8 +1,6 @@
 package config
 
 import (
-	"errors"
-	"fmt"
 	"log"
 
 	"github.com/caarlos0/env/v6"
@@ -46,35 +44,25 @@ var (
 )
 
 const (
-	configPath = "circle-config.env"
+	DefaultConfigPath = "circle-config.env"
 )
 
-func loadConfig() error {
-	err := godotenv.Load(configPath)
-	if err != nil {
-		return errors.New("error loading .env file")
+func InitConfig(path string) {
+	if path == "" {
+		path = DefaultConfigPath
 	}
 
-	// Parse the environment variables into the struct
+	err := godotenv.Load(path)
+	if err != nil {
+		log.Fatalln("Error loading .env file: " + err.Error())
+	}
+
 	cfg := config{}
 	if err := env.Parse(&cfg); err != nil {
-		return fmt.Errorf("failed to parse env into struct: %v", err)
+		log.Fatalln("Error parse env data to struct: " + err.Error())
 	}
 
 	App = cfg.App
 	DB = cfg.DB
 	Redis = cfg.Redis
-
-	// Print the config struct to verify the values
-	fmt.Printf("Config: %+v\n", cfg)
-
-	return nil
-}
-
-func init() {
-	err := loadConfig()
-	if err != nil {
-		log.Println("Error load config, err: " + err.Error())
-		panic(err)
-	}
 }
