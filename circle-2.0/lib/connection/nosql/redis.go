@@ -10,7 +10,9 @@ import (
 	"github.com/go-redis/redis/v8"
 )
 
-func RedisConnect() *redis.Client {
+var RedisConnect *redis.Client
+
+func InitRedis() {
 	redisConfig := config.Redis
 	redisConn := redis.NewClient(&redis.Options{
 		Addr:     fmt.Sprintf("%s:%d", redisConfig.Host, redisConfig.Port),
@@ -20,9 +22,10 @@ func RedisConnect() *redis.Client {
 
 	err := redisConn.Ping(context.Background()).Err()
 	if err != nil {
-		logger.Error.Printf("Failed to connect to Redis! err: %v", err)
+		err = fmt.Errorf("Failed to connect to Redis! err: %v", err)
+		logger.Error.Print(err.Error())
 		panic(err)
 	}
 
-	return redisConn
+	RedisConnect = redisConn
 }
