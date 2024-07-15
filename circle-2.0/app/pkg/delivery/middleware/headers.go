@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"time"
 
+	"circle-2.0/app/config"
 	"circle-2.0/lib/helper/tool"
 	"circle-2.0/lib/logger"
 	"circle-2.0/lib/model"
@@ -41,10 +42,10 @@ func Headers(c *fiber.Ctx) error {
 	}
 
 	// Perform validation (example logic)
-	if apiDetail.Headers.APIKey == "" {
+	if apiDetail.Headers.SecretKey == "" {
 		status = &model.Status{Code: http.StatusUnauthorized, Message: "secret-key is needed on header"}
 		return fiber.NewError(status.Code, status.Message)
-	} else if apiDetail.Headers.APIKey != "AshJ/v@!41" {
+	} else if apiDetail.Headers.SecretKey != config.App.SecretKey {
 		status = &model.Status{Code: http.StatusUnauthorized, Message: "invalid secret-key on header"}
 		return fiber.NewError(status.Code, status.Message)
 	}
