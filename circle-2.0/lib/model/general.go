@@ -3,7 +3,7 @@ package model
 type (
 	Headers struct {
 		TransactionID string `json:"transaction-id"`
-		APIKey        string `json:"api-key"`
+		SecretKey     string `json:"secret-key"`
 		ChannelID     string `json:"channel-id"`
 	}
 
