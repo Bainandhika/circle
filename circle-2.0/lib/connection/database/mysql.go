@@ -17,19 +17,22 @@ import (
 
 var MySQLConnect *gorm.DB
 
-func setMySQL() *gorm.DB {
-	dbConfig := config.DB
+type SetMySQL struct {
+	DBConfig config.DatabaseConfig
+	LogPath string
+}
 
+func (m *SetMySQL) setMySQL() *gorm.DB {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&loc=Local",
-		dbConfig.Username,
-		dbConfig.Password,
-		dbConfig.Host,
-		dbConfig.Port,
-		dbConfig.Name,
+		m.DBConfig.Username,
+		m.DBConfig.Password,
+		m.DBConfig.Host,
+		m.DBConfig.Port,
+		m.DBConfig.Name,
 	)
 
 	date := time.Now().Format("20060102")
-	fileName := fmt.Sprintf("%scircle-gorm-%s.log", config.App.LogPath, date)
+	fileName := fmt.Sprintf("%scircle-gorm-%s.log", m.LogPath, date)
 
 	file, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
@@ -92,6 +95,6 @@ func setMySQL() *gorm.DB {
 	return database
 }
 
-func InitMySQLConnection() {
-	MySQLConnect = setMySQL()
+func (m *SetMySQL) InitMySQLConnection() {
+	MySQLConnect = m.setMySQL()
 }
