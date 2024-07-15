@@ -1,31 +1,27 @@
 package test
 
 import (
+	"circle-2.0/app/config"
 	"circle-2.0/app/pkg/delivery/router"
 	"circle-2.0/lib/connection/database"
 	"circle-2.0/lib/connection/nosql"
 	"circle-2.0/lib/logger"
 	"github.com/gofiber/fiber/v2"
-	"github.com/jasonlvhit/gocron"
 )
 
 func SetUpTestApp() *fiber.App {
-	go func() {
-		sch := gocron.NewScheduler()
-		logger.InitializeLoggerScheduler(sch)
-		<-sch.Start()
-	}()
+	configPath := "c:/go/src/circle/circle-2.0/circle-config.env"
+	config.InitConfig(configPath)
 
-	database.InitMySQLConnection()
-	mysql := database.MySQLConnect
-	mysqlDB, _ := mysql.DB()
+	logPath := "c:/go/src/circle/circle-2.0/test/log/"
 
-	redis := nosql.RedisConnect()
+	logConfig := logger.LoggerConfig{LogPath: logPath}
+	logConfig.InitLogger()
 
-	defer func() {
-		mysqlDB.Close()
-		redis.Close()
-	}()
+	db := database.SetMySQL{DBConfig: config.DB, LogPath: logPath}
+	db.InitMySQLConnection()
 
-	return router.SetupRouter(mysql, redis)
+	nosql.InitRedis()
+
+	return router.SetupRouter(database.MySQLConnect, nosql.RedisConnect)
 }
