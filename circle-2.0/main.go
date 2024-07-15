@@ -13,18 +13,25 @@ import (
 )
 
 func main() {
+	config.InitConfig(config.DefaultConfigPath)
+
+	logConfig := logger.LoggerConfig{LogPath: config.App.LogPath}
+	logConfig.InitLogger()
+
 	go func() {
 		sch := gocron.NewScheduler()
-		logger.InitializeLoggerScheduler(sch)
+		logConfig.InitializeLoggerScheduler(sch)
 		<-sch.Start()
 	}()
 
-	database.InitMySQLConnection()
+	db := database.SetMySQL{DBConfig: config.DB, LogPath: config.App.LogPath}
+	db.InitMySQLConnection()
 	mysql := database.MySQLConnect
 	mysqlDB, _ := mysql.DB()
 
-	redis := nosql.RedisConnect()
-
+	nosql.InitRedis()
+	redis := nosql.RedisConnect
+	
 	defer func() {
 		mysqlDB.Close()
 		redis.Close()
