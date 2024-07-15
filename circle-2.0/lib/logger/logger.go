@@ -6,8 +6,6 @@ import (
 	"os"
 	"time"
 
-	"circle-2.0/app/config"
-
 	"github.com/jasonlvhit/gocron"
 )
 
@@ -20,9 +18,13 @@ var (
 	fileName string
 )
 
-func createLogFile() error {
+type LoggerConfig struct {
+	LogPath string
+}
+
+func (l *LoggerConfig) createLogFile(logPath string) error {
 	date := time.Now().Format("20060102")
-	fileName = fmt.Sprintf("%scircle-2.0-%s.log", config.App.LogPath, date)
+	fileName = fmt.Sprintf("%scircle-2.0-%s.log", logPath, date)
 
 	var err error
 	file, err = os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
@@ -33,10 +35,10 @@ func createLogFile() error {
 	return nil
 }
 
-func newLogger() {
-	err := createLogFile()
+func (l *LoggerConfig) InitLogger() {
+	err := l.createLogFile(l.LogPath)
 	if err != nil {
-		panic(fmt.Errorf("can't create circle log file, err: %v", err))
+		log.Fatalln("Error create circle log file: " + err.Error())
 	}
 
 	flag := log.LstdFlags | log.Llongfile
@@ -49,13 +51,9 @@ func newLogger() {
 	Info.Printf("Circle new start!")
 }
 
-func InitializeLoggerScheduler(sch *gocron.Scheduler) {
-	err := sch.Every(1).Day().At("00:00").Do(newLogger)
+func (l *LoggerConfig) InitializeLoggerScheduler(sch *gocron.Scheduler) {
+	err := sch.Every(1).Day().At("00:00").Do(l.InitLogger)
 	if err != nil {
 		panic(fmt.Errorf("can't create scheduler of circle log file, err: %v", err))
 	}
-}
-
-func init() {
-	newLogger()
 }
