@@ -10,8 +10,7 @@ import (
 )
 
 func SetUpTestApp() *fiber.App {
-	configPath := "c:/go/src/circle/circle-2.0/circle-config.env"
-	config.InitConfig(configPath)
+	config.InitConfig()
 
 	logPath := "c:/go/src/circle/circle-2.0/test/log/"
 

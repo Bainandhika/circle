@@ -20,6 +20,9 @@
 # Text files
 *.txt
 
+# Directory
+circle-2.0/.vscode/
+
 # Go workspace file
 go.work
 go.work.sum

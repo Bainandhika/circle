@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	config.InitConfig(config.DefaultConfigPath)
+	config.InitConfig()
 
 	logConfig := logger.LoggerConfig{LogPath: config.App.LogPath}
 	logConfig.InitLogger()

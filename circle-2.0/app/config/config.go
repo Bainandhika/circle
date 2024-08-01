@@ -43,16 +43,8 @@ var (
 	Redis RedisConfig
 )
 
-const (
-	DefaultConfigPath = "circle-config.env"
-)
-
-func InitConfig(path string) {
-	if path == "" {
-		path = DefaultConfigPath
-	}
-
-	err := godotenv.Load(path)
+func InitConfig() {
+	err := godotenv.Load()
 	if err != nil {
 		log.Fatalln("Error loading .env file: " + err.Error())
 	}
