@@ -26,3 +26,6 @@ circle-2.0/.vscode/
 # Go workspace file
 go.work
 go.work.sum
+
+# configuration
+*.env
