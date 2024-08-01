@@ -48,7 +48,7 @@ func SetupRouter(db *gorm.DB, redis *redis.Client) *fiber.App {
 		JSONDecoder: json.Unmarshal,
 	})
 
-	r.Use(middleware.CaptureRequest, middleware.Headers, middleware.LoggingAPIDetail)
+	r.Use(middleware.CaptureRequest, middleware.Headers, middleware.LoggingAPIDetail, middleware.RecoveryMiddleware)
 
 	publicRoutes(r, userHandler)
 	authenticatedRoutes(r, userHandler)
