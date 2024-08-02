@@ -1,0 +1,87 @@
+# Circle 2.0 - Order Management System
+
+Circle is a simple and lightweight order management system. At version 1.0 it built with Gin framework, but now it use Fiber framework for get better performance. The app aims to simplify the process of splitting bills for various orders, considering additional costs and discounts. It includes MySQL as the database and Redis for caching. In version 2.0 new feature is added, that is update order.
+
+## Features
+
+- User service:
+
+  - Create User
+  - Get User
+  - Get Users
+  - Update User
+  - Delete User
+
+- Order service:
+  - Create Order
+  - Get Orders List
+  - Get Bill
+  - Get Bill of a User
+  - Delete Order
+  - Update Order
+
+## Installation
+
+To install Circle, follow these steps:
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Bainandhika/circle.git
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd circle/circle
+```
+
+3. Install dependencies:
+
+```bash
+go mod tidy -v
+```
+
+4. Build the app:
+
+```bash
+go build main.go
+```
+
+## Usage
+
+To run the Circle app, execute the following command:
+
+```bash
+./main
+```
+
+The app will start listening on port 8080 by default. You can access it in your browser at http://localhost:8080.
+
+## API Endpoints
+
+Circle provides the following API endpoints:
+
+- Health check: /circle/health
+
+- User service:
+
+  - POST /circle/new/user - Create a new user
+  - GET /circle/login - Login user
+  - GET /users/get/:id - Get a user by ID
+  - GET /users/get/all - Get all users
+  - PUT /users/update/:id - Update a user by ID
+  - DELETE /users/delete/:id - Delete a user by ID
+
+- Order service:
+  - POST /order/new - Create a new order
+  - GET /order/get/all - Get all orders
+  - GET /order/bill/:id - Get the bill for a specific order
+  - GET /order/bill/user - Get the bill for a specific user
+  - DELETE /order/:id - Delete an order by ID
+  - PUT /order/update/:id - Update an order
+
+## Notes
+
+- The decimal tolerance for price calculations is set to 2 decimal places.
+- Circle uses MySQL as the database and Redis for caching. You will need to set up your own MySQL and Redis instances and update the configuration accordingly at circle-config.yaml .
