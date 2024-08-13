@@ -52,7 +52,7 @@ func SetupRouter(db *gorm.DB, redis *redis.Client) *fiber.App {
 	r.Use(cors.New(cors.Config{
 		AllowOrigins:     "*",
         AllowMethods:     "GET, POST, PUT, DELETE",
-        AllowHeaders:     "Content-Type, Authorization",
+        AllowHeaders:     "Content-Type, Authorization, secret-key, channel-id",
 	}))
 
 	r.Use(middleware.CaptureRequest, middleware.Headers, middleware.LoggingAPIDetail, middleware.RecoveryMiddleware)
