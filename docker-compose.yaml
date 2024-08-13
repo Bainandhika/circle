@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootPassword  # Consider using ${MYSQL_ROOT_PASSWORD} with a .env file
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: adminPassword  # Consider using ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: circle
+    ports:
+      - "3306:3306"
+    networks:
+      - network1
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - network1
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+  go-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: circle
+    ports:
+      - "8080:8080"
+    networks:
+      - network1
+    volumes:
+      - logs:/app/log
+      - bills:/app/saved-bill
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+networks:
+  network1:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  logs:
+  bills:
