@@ -14,6 +14,7 @@ import (
 	"github.com/go-redis/redis/v8"
 	"github.com/goccy/go-json"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"gorm.io/gorm"
 )
 
@@ -47,6 +48,12 @@ func SetupRouter(db *gorm.DB, redis *redis.Client) *fiber.App {
 		JSONEncoder: json.Marshal,
 		JSONDecoder: json.Unmarshal,
 	})
+
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     "*",
+        AllowMethods:     "GET, POST, PUT, DELETE",
+        AllowHeaders:     "Content-Type, Authorization",
+	}))
 
 	r.Use(middleware.CaptureRequest, middleware.Headers, middleware.LoggingAPIDetail, middleware.RecoveryMiddleware)
 
