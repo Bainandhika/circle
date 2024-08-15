@@ -5,17 +5,19 @@ import (
 	"net/http"
 
 	"circle/lib/model"
+
+	"gorm.io/gorm"
 )
 
 func (s *orderService) DeleteOrder(orderID string) (status *model.Status) {
 	var err error
 	funcName := "[Service - DeleteOrder]"
 
-	tx := s.DB.Begin()
+	tx := s.DB.Session(&gorm.Session{Logger: s.DB.Logger}).Begin()
 	if err = tx.Error; err != nil {
 		return &model.Status{
 			Code:    http.StatusInternalServerError,
-			Message: fmt.Sprintf("%s error at o.DB.Begin(): %v", funcName, err),
+			Message: fmt.Sprintf("%s error at s.DB.Session(&gorm.Session{Logger: s.DB.Logger}).Begin(): %v", funcName, err),
 		}
 	}
 

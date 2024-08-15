@@ -26,11 +26,11 @@ func (s *orderService) CreateOrder(req model.OrderRequest, startTime time.Time) 
 		s.Name = tool.CapitalizeEachWord(s.Name)
 	}
 
-	tx := s.DB.Begin()
+	tx := s.DB.Session(&gorm.Session{Logger: s.DB.Logger}).Begin()
 	if err = tx.Error; err != nil {
 		return resp, &model.Status{
 			Code:    http.StatusInternalServerError,
-			Message: fmt.Sprintf("%s error at s.DB.Begin(): %v", funcName, err),
+			Message: fmt.Sprintf("%s error at s.DB.Session(&gorm.Session{Logger: s.DB.Logger}).Begin(): %v", funcName, err),
 		}
 	}
 

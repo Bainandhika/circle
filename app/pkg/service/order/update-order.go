@@ -10,19 +10,21 @@ import (
 	"circle/lib/helper/tool"
 	"circle/lib/logger"
 	"circle/lib/model"
+
+	"gorm.io/gorm"
 )
 
 func (s *orderService) UpdateOrder(orderMainID string, req model.UpdateOrderRequest, startTime time.Time) *model.Status {
 	funcName := "[Service - Update Order]"
 
-	tx := s.DB.Begin(&sql.TxOptions{
+	tx := s.DB.Session(&gorm.Session{Logger: s.DB.Logger}).Begin(&sql.TxOptions{
 		Isolation: sql.LevelReadUncommitted,
 	})
 	err := tx.Error
 	if err != nil {
 		return &model.Status{
 			Code:    http.StatusInternalServerError,
-			Message: fmt.Sprintf("%s error at s.DB.Begin(): %v", funcName, err),
+			Message: fmt.Sprintf("%s error at s.DB.Session(&gorm.Session{Logger: s.DB.Logger}).Begin(): %v", funcName, err),
 		}
 	}
 
